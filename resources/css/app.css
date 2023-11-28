@@ -1,0 +1,7 @@
+.grayscale-transition {
+    transition: filter 0.5s ease-in-out;
+}
+
+.grayscale {
+    filter: grayscale(100%);
+}
