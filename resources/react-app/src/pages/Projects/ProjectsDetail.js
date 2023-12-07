@@ -114,7 +114,7 @@ function ProjectsDetail() {
                     draggable="false"
                     onDragStart={handleDragStart}
                     onDragOver={handleDragOver}
-                    className="w-full h-full fixed top-0 left-0 z-30 flex justify-center items-center"
+                    className="w-full h-full fixed top-0 left-0 z-30 flex justify-center items-center select-none"
                 >
                     <p
                         className="w-10 h-10 text-2xl rounded-full absolute right-10 top-10 bg-white text-black z-50 flex justify-center items-center cursor-pointer hover:scale-105 duration-100 delay-100"
@@ -124,159 +124,261 @@ function ProjectsDetail() {
                     </p>
 
                     <FaChevronLeft
-                        className="text-white z-50 text-5xl cursor-pointer hover:scale-105 duration-150 delay-150"
+                        className="text-white z-50 text-5xl cursor-pointer hover:scale-105 duration-150 delay-150 select-none"
                         onClick={() => prevImage(bigImage)}
                     />
                     <img
-                        className="w-4/6 h-auto object-cover z-50"
+                        className="w-4/6 h-auto object-cover z-50 select-none"
                         src={bigImage}
                         alt="bigimage"
                     />
                     <FaChevronRight
-                        className="text-white z-50 text-5xl cursor-pointer hover:scale-105 duration-150 delay-150"
+                        className="text-white z-50 text-5xl cursor-pointer hover:scale-105 duration-150 delay-150 select-none"
                         onClick={() => nextImage(bigImage)}
                     />
-                    <div className="absolute w-full h-full bg-black opacity-70 z-10" />
+                    <div className="absolute w-full h-full bg-black opacity-70 z-10 select-none" />
                 </div>
             )}
 
-            <div className="w-full h-auto relative mt-12">
+            <div className="w-full h-auto relative mt-12 max-md:mt-8 select-none">
                 <img
-                    className="relative w-full h-[500px] max-lg:h-[250px] max-md:mb-10 object-cover"
+                    className="relative w-full h-[600px] max-2xl:h-[400px] max-xl:h-[300px] max-lg:h-[200px] max-sm:w-full max-sm:h-full  max-md:mb-10 object-cover select-none"
                     src={data?.banner ? data?.banner : data?.small_image}
                     alt="ContactBanner"
                 />
-                <img
-                    className="absolute max-xl:w-[65%] -bottom-1  right-0 max-lg:hidden"
-                    src={Line}
-                    alt="Line"
-                />
-                <p
-                    onClick={handleGoBack}
-                    className="  max-lg:text-white max-lg:hidden  absolute bottom-0 right-20 max-xl:right-16 max-lg:right-9 max-md:right-3 text-xl max-md:text-sm cursor-pointer font-light hover:scale-105 duration-150 delay-150"
-                >
-                    {t("back")}
-                </p>
+                {window.innerWidth > 500 ? (
+                    <img
+                        className="absolute  max-2xl:w-[45%] max-md:w-[20rem]  -bottom-[0.10rem]  right-0 line-index select-none"
+                        src={Line}
+                        alt="Line"
+                    />
+                ) : (
+                    <img
+                        className="absolute  w-[66%]  bottom-0  right-0 line-index select-none"
+                        src={Line}
+                        alt="Line"
+                    />
+                )}
             </div>
             {data && (
                 <div className="w-full mt-12 max-xl:mt-8">
-                    <p className="px-28 max-2xl:px-16 max-xl:px-10 max-md:px-2  text-4xl max-xl:text-3xl max-lg:text-2xl font-light text-[#464646] mb-8">
-                        {data.name}
-                    </p>
                     {paragraphs.map((item, i) =>
                         i === 0 ? (
                             <div
                                 key={i}
-                                className="px-28 max-2xl:px-16 max-xl:px-10 max-md:px-2  flex justify-between items-start gap-5 max-md:flex-col-reverse"
+                                className="px-5 flex justify-between items-start gap-5 max-lg:flex-col"
                             >
-                                <p
-                                    className="w-3/6 max-md:w-full py-3 text-[#464646] opacity-60 leading-7"
-                                    dangerouslySetInnerHTML={{ __html: item }}
-                                />
-                                <div className="w-2/6 max-md:w-full flex flex-col justify-end items-start float-left">
-                                    {data.location && (
-                                        <div className="py-2 text-start flex gap-2">
-                                            <p className="font-semibold text-[#4f4f4f]">
-                                                {t("konum")}:
-                                            </p>
-                                            <p className="text-[#464646] font-light">
-                                                {data.location}
-                                            </p>
-                                        </div>
-                                    )}
-                                    {data.taskmaster && (
-                                        <div className="py-2 text-start flex gap-2">
-                                            <p className="font-semibold text-[#4f4f4f]">
-                                                {t("işveren")}:
-                                            </p>
-                                            <p className="text-[#464646] font-light">
-                                                {data.taskmaster}
-                                            </p>
-                                        </div>
-                                    )}
-                                    {data.space && (
-                                        <div className="py-2 text-start flex gap-2">
-                                            <p className="font-semibold text-[#4f4f4f]">
-                                                {t("yapialanı")}:
-                                            </p>
-                                            <p className="text-[#464646] font-light">
-                                                {data.space}
-                                            </p>
-                                        </div>
-                                    )}
-                                    {data.subject && (
-                                        <div className="py-2 text-start flex gap-2">
-                                            <p className="font-semibold text-[#4f4f4f]">
-                                                {t("konu")}:
-                                            </p>
-                                            <p className="text-[#464646] font-light">
-                                                {data.subject}
-                                            </p>
-                                        </div>
-                                    )}
-                                    {data.year && (
-                                        <div className="py-2 text-start flex gap-2">
-                                            <p className="font-semibold text-[#4f4f4f]">
-                                                {t("yil")}:
-                                            </p>
-                                            <p className="text-[#464646] font-light">
-                                                {data.year}
-                                            </p>
-                                        </div>
-                                    )}
+                                <div className="w-3/6 max-lg:w-full flex flex-col justify-center items-center max-lg:items-start">
+                                    <div className="max-w-[500px] max-lg:max-w-none">
+                                        <p className="text-4xl w-full max-lg:text-3xl font-light text-[#464646] mb-8">
+                                            {data.name}
+                                        </p>
+                                        <p
+                                            className="w-full text-[#464646] opacity-60 leading-7 text-justify"
+                                            dangerouslySetInnerHTML={{
+                                                __html: item,
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-3/6 max-lg:w-full flex flex-col justify-center items-center">
+                                    <div className="max-lg:w-full">
+                                        {data.location && (
+                                            <div className="py-1 text-start flex gap-2">
+                                                <p className="font-semibold text-[#4f4f4f]">
+                                                    {t("konum")}:
+                                                </p>
+                                                <p className="text-[#464646] font-light">
+                                                    {data.location}
+                                                </p>
+                                            </div>
+                                        )}
+                                        {data.taskmaster && (
+                                            <div className="py-1 text-start flex gap-2">
+                                                <p className="font-semibold text-[#4f4f4f]">
+                                                    {t("işveren")}:
+                                                </p>
+                                                <p className="text-[#464646] font-light">
+                                                    {data.taskmaster}
+                                                </p>
+                                            </div>
+                                        )}
+                                        {data.space && (
+                                            <div className="py-1 text-start flex gap-2">
+                                                <p className="font-semibold text-[#4f4f4f]">
+                                                    {t("yapialanı")}:
+                                                </p>
+                                                <p className="text-[#464646] font-light">
+                                                    {data.space}
+                                                </p>
+                                            </div>
+                                        )}
+                                        {data.subject && (
+                                            <div className="py-1 text-start flex gap-2">
+                                                <p className="font-semibold text-[#4f4f4f]">
+                                                    {t("konu")}:
+                                                </p>
+                                                <p className="text-[#464646] font-light">
+                                                    {data.subject}
+                                                </p>
+                                            </div>
+                                        )}
+                                        {data.year && (
+                                            <div className="py-1 text-start flex gap-2">
+                                                <p className="font-semibold text-[#4f4f4f]">
+                                                    {t("yil")}:
+                                                </p>
+                                                <p className="text-[#464646] font-light">
+                                                    {data.year}
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         ) : i % 2 === 0 ? (
-                            <div
-                                key={i}
-                                className="flex justify-between items-center my-8 float-right max-md:flex-col-reverse"
-                            >
+                            <>
                                 {" "}
-                                <div className="flex-1 max-md:w-full p-20 max-md:p-2 max-md:text-start flex justify-center items-center">
-                                    <p
-                                        className="max-md:w-full py-3 text-[#464646] opacity-60 leading-7"
-                                        dangerouslySetInnerHTML={{
-                                            __html: item,
-                                        }}
-                                    />
+                                <div
+                                    key={i}
+                                    className={
+                                        data.slug === "rams-city-golden-horn"
+                                            ? "-full flex justify-between items-stretch my-8 float-right max-md:flex-col-reverse px-5 gap-5 max-lg:flex-col max-md:px-0"
+                                            : "w-full flex justify-between items-stretch my-8 float-right max-md:flex-col-reverse px-5 gap-5 max-lg:flex-col-reverse max-md:px-0"
+                                    }
+                                >
+                                    {" "}
+                                    <div
+                                        className={
+                                            data.slug ===
+                                            "rams-city-golden-horn"
+                                                ? "w-2/4 max-lg:w-full flex flex-col justify-between items-center max-lg:items-start max-md:px-5"
+                                                : "w-2/4 max-lg:w-full flex flex-col justify-center items-center max-lg:items-start max-md:px-5"
+                                        }
+                                    >
+                                        {data.slug ===
+                                        "rams-city-golden-horn" ? (
+                                            <div className="w-full h-full flex justify-center items-center">
+                                                {" "}
+                                                <p
+                                                    className={
+                                                        "max-md:w-full max-w-[500px] max-lg:max-w-none py-3 text-[#464646] opacity-60 leading-7 text-justify"
+                                                    }
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: item,
+                                                    }}
+                                                />
+                                            </div>
+                                        ) : (
+                                            <p
+                                                className={
+                                                    "max-md:w-full max-w-[500px] max-lg:max-w-none py-3 text-[#464646] opacity-60 leading-7 text-justify"
+                                                }
+                                                dangerouslySetInnerHTML={{
+                                                    __html: item,
+                                                }}
+                                            />
+                                        )}
+
+                                        {data.slug ===
+                                            "rams-city-golden-horn" && (
+                                            <img
+                                                className="w-full max-lg:w-full float-right"
+                                                src={data.text_images[i]}
+                                                alt="İmages"
+                                            />
+                                        )}
+                                    </div>
+                                    <div className="w-2/4 max-lg:w-full flex flex-col px-5">
+                                        {data.text_images !== null && (
+                                            <img
+                                                className="w-full max-lg:w-full float-right"
+                                                src={data.text_images[i - 1]}
+                                                alt="İmages"
+                                            />
+                                        )}
+                                    </div>
                                 </div>
-                                <div className="flex-1 max-md:w-full">
-                                    {data.text_images !== null && (
-                                        <img
-                                            className="w-full max-lg:w-full float-right"
-                                            src={data.text_images[i - 1]}
-                                            alt="İmages"
-                                        />
-                                    )}
-                                </div>
-                            </div>
+                            </>
                         ) : (
-                            <div className="flex justify-between items-center flex-row-reverse my-8 float-left text-right max-md:flex-col-reverse">
-                                <div className="w-2/4 max-md:w-full p-20 max-md:p-2 max-md:text-start flex justify-center items-center">
-                                    <p
-                                        className=" max-md:w-full py-3 text-[#464646] opacity-60 leading-7"
-                                        dangerouslySetInnerHTML={{
-                                            __html: item,
-                                        }}
-                                    />
-                                </div>
-                                <div className="w-2/4 max-md:w-full">
-                                    {data.text_images !== null && (
-                                        <img
-                                            className="w-full max-lg:w-full float-left"
-                                            src={data.text_images[i - 1]}
-                                            alt="İmages"
+                            <>
+                                {" "}
+                                <div className="w-full flex justify-between items-center flex-row-reverse my-8 float-left text-right max-md:flex-col-reverse px-5 gap-5 max-lg:flex-col-reverse max-md:px-0">
+                                    <div className="w-2/4 max-lg:w-full font-normal text-justify max-lg:mt-2 flex flex-col justify-center items-center max-md:px-5">
+                                        <p
+                                            className="max-md:w-full py-3 max-w-[500px] max-lg:max-w-none text-[#464646] opacity-60 leading-7 text-justify"
+                                            dangerouslySetInnerHTML={{
+                                                __html: item,
+                                            }}
                                         />
-                                    )}
+                                    </div>
+                                    <div
+                                        className={
+                                            data.slug === "mali-hotel"
+                                                ? "w-3/4 max-lg:w-full"
+                                                : "w-2/4 max-lg:w-full"
+                                        }
+                                    >
+                                        {data.text_images !== null && (
+                                            <img
+                                                className="max-lg:w-full float-left object-cover w-full"
+                                                src={data.text_images[i - 1]}
+                                                alt="Images"
+                                            />
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
+                                {data.slug === "rams-city-golden-horn" &&
+                                    i === 1 && (
+                                        <div className="w-full flex justify-center items-center mt-4">
+                                            <img
+                                                className="w-full h-full"
+                                                src={data.last_image}
+                                                alt={data.name}
+                                            />
+                                        </div>
+                                    )}
+                            </>
                         )
                     )}
                 </div>
             )}
 
+            {data && (
+                <div
+                    className={
+                        data.slug === "rams-city-golden-horn"
+                            ? "hidden"
+                            : "w-full flex justify-center items-center mt-4"
+                    }
+                >
+                    {data.slug === "yalova-centropark-project" ? (
+                        <img
+                            className={
+                                data.last_image === null
+                                    ? "hidden"
+                                    : "w-full h-full"
+                            }
+                            src={data.last_image}
+                            alt={data.name}
+                        />
+                    ) : (
+                        <img
+                            className={
+                                data.slug === "rams-city-golden-horn" ||
+                                data.last_image === null
+                                    ? "hidden"
+                                    : "w-full h-full"
+                            }
+                            src={data.last_image}
+                            alt={data.name}
+                        />
+                    )}
+                </div>
+            )}
             <Swiper
-                className="mySwiper w-full my-10"
+                className="mySwiper w-full my-10 select-none"
                 slidesPerView={1}
                 spaceBetween={10}
                 navigation={true}
@@ -297,9 +399,9 @@ function ProjectsDetail() {
                 }}
             >
                 {data?.images?.map((item, i) => (
-                    <SwiperSlide className="h-auto" key={i}>
+                    <SwiperSlide className="h-auto select-none mt-2" key={i}>
                         <img
-                            className="w-full h-full cursor-pointer"
+                            className="w-full h-full cursor-pointer select-none"
                             src={item}
                             alt="projectimage"
                             onClick={() => setBigImage(item)}
@@ -307,15 +409,6 @@ function ProjectsDetail() {
                     </SwiperSlide>
                 ))}
             </Swiper>
-            {data && (
-                <div className="w-full flex justify-center items-center">
-                    {data.slug === "yalova-centropark-project" ? (
-                        <img src={data.last_image} alt={data.name} />
-                    ) : (
-                        <img src={data.last_image} alt={data.name} />
-                    )}
-                </div>
-            )}
         </div>
     );
 }

@@ -3,6 +3,7 @@
 @tailwind utilities;
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
+
 .grayscale-transition {
     transition: filter 0.5s ease-in-out;
 }
@@ -30,7 +31,7 @@
 .text-with-underline {
     position: relative;
     display: inline-block;
-    color: #535353;
+    color: #464646;
     text-decoration: none;
 }
 
@@ -133,4 +134,40 @@
 }
 .header-line-index {
     z-index: 99999999;
+}
+
+.swiper-container {
+  height: calc(100vh - 120px);
+  margin: 60px;
+}
+
+.swiper-slide {
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  transform-origin: center center;
+}
+
+.copy {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  letter-spacing: 0.06em;
+}
+.navbar-open-close {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.863);
+    top: 6rem;
+}
+
+.item-div  {
+    color: #464646 !important;
+    opacity: 0.6 !important;
+    line-height: 1.75rem !important;
+    text-align: justify !important;
+    font-weight: 400 !important;
 }

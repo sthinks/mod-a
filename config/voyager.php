@@ -97,7 +97,7 @@ return [
 
     'multilingual' => [
         'enabled' => true,
-        'default' => 'tr',
+        'default' => 'en',
         'locales' => [
             'tr',
             'en',

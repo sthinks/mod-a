@@ -7,7 +7,7 @@
     <link href="{{ asset('../css/app.css') }}" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
-    <title>Mod-a</title>
+    <title>Mod-A</title>
 </head>
 
 <body class="antialiased">

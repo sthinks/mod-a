@@ -12,6 +12,8 @@ const resources = {
             yil: "YIL",
             contact_title: "İLETİŞİM",
             header_teams: "EKİP",
+            header_news: "HABERLER",
+
             header_projects: "PROJELER",
             header_aboutus: "HAKKIMIZDA",
             devami: "Devamı için tıklayınız",
@@ -30,6 +32,7 @@ const resources = {
             yil: "YEAR",
             contact_title: "CONTACT",
             header_teams: "TEAMS",
+            header_news: "NEWS",
             header_projects: "PROJECTS",
             header_aboutus: "ABOUT US",
             devami: "Click for more",
@@ -44,7 +47,7 @@ i18n.use(initReactI18next).init({
     interpolation: {
         escapeValue: false,
     },
-    fallbackLng: "tr",
+    fallbackLng: "en",
     resources,
 });
 

@@ -6,6 +6,8 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import Teams from "../pages/Teams/Teams";
 import Projects from "../pages/Projects/Projects";
 import ProjectsDetail from "../pages/Projects/ProjectsDetail";
+import News from "../pages/News/News";
+import NewsDetail from "../pages/News/NewsDetail";
 
 function AppRoute() {
     return (
@@ -19,6 +21,9 @@ function AppRoute() {
                         path="/projects/:slug"
                         element={<ProjectsDetail />}
                     />
+                    <Route path="/news" element={<News />} />
+
+                    <Route path="/news/:slug" element={<NewsDetail />} />
 
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/about-us" element={<AboutUs />} />

@@ -37,3 +37,12 @@ Route::get('/get-sliders', [
     \App\Http\Controllers\BaseController::class,
     'getSliders',
 ]);
+Route::get('/get-news', [
+    \App\Http\Controllers\BaseController::class,
+    'getAllNews',
+]);
+
+Route::get('/get-new/{slug}', [
+    \App\Http\Controllers\BaseController::class,
+    'getNew',
+]);

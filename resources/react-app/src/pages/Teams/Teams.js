@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import generalService from "../../service/GeneralService";
 import aboutusbg from "../../assets/Teams/teamBanner.png";
-import AboutusBanner from "../../assets/Teams/ekipbanner.png";
+import TeamsBanner from "../../assets/Teams/ekipbanner.png";
 import { useTranslation } from "react-i18next";
 import Line from "../../assets/cizgi.png";
 
@@ -28,38 +28,35 @@ function Teams() {
     const handleMouseLeave = () => {
         setHoverImg(-1);
     };
-    const navigate = useNavigate();
-
-    const handleGoBack = () => {
-        navigate(-1);
-    };
 
     return (
         <div>
-            <div className="w-full h-auto relative mt-12">
+            <div className="w-full h-auto relative mt-12 max-md:mt-8">
                 <img
-                    className="relative w-full h-[500px] max-lg:h-[250px] max-md:mb-10 object-cover"
-                    src={AboutusBanner}
+                    className="relative w-full h-[600px] max-2xl:h-[400px] max-xl:h-[300px]  max-sm:w-full max-sm:h-full  max-md:mb-10 object-cover"
+                    src={TeamsBanner}
                     alt="ContactBanner"
                 />
-                <img
-                    className="absolute max-xl:w-[65%] -bottom-1  right-0 max-lg:hidden"
-                    src={Line}
-                    alt="Line"
-                />
-                <p
-                    onClick={handleGoBack}
-                    className="  max-lg:text-white max-lg:hidden  absolute bottom-0 right-20 max-xl:right-16 max-lg:right-9 max-md:right-3 text-xl max-md:text-sm cursor-pointer font-light hover:scale-105 duration-150 delay-150"
-                >
-                    {t("back")}
-                </p>
+                {window.innerWidth > 500 ? (
+                    <img
+                        className="absolute  max-2xl:w-[45%] max-md:w-[20rem]  -bottom-[0.10rem]  right-0 line-index"
+                        src={Line}
+                        alt="Line"
+                    />
+                ) : (
+                    <img
+                        className="absolute  w-[66%]  bottom-0  right-0 line-index"
+                        src={Line}
+                        alt="Line"
+                    />
+                )}
             </div>
 
             <div className="w-full px-36 max-2xl:px-20 max-xl:px-10  mt-12 max-md:px-2">
                 <p className="text-4xl max-xl:text-3xl max-md:text-2xl  font-medium opacity-80 text-[#535353] mb-5">
                     {t("header_teams")}
                 </p>
-                <div className="flex justify-start items-center gap-4 max-md:flex-wrap mt-4">
+                <div className="grid grid-cols-5 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-4">
                     {teams.map(
                         (item, i) =>
                             i < 2 && (
@@ -67,32 +64,28 @@ function Teams() {
                                     key={i}
                                     onMouseEnter={() => handleMouseEnter(i)}
                                     onMouseLeave={handleMouseLeave}
-                                    className="relative  h-[600px] max-lg:h-[500px] max-md:h-[350px] max-md:w-[45%] cursor-pointer  flex flex-col justify-between items-start  overflow-hidden"
+                                    className="w-full h-full relative cursor-pointer  flex justify-center items-center flex-col overflow-hidden"
                                 >
-                                    <div
-                                        className={`w-96 max-2xl:w-72 max-xl:w-56   h-5/6  object-center grayscale-transition scale-transition ${
-                                            hoverImg === i
-                                                ? ""
-                                                : "grayscale scale"
-                                        }`}
-                                    >
+                                    <div className="w-full h-full grayscale-transition scale-transition">
                                         <img
-                                            className="w-full h-full object-cover text-center team-image"
+                                            className={`w-full grayscale-transition h-full scale-transition ${
+                                                hoverImg === i
+                                                    ? ""
+                                                    : "grayscale scale"
+                                            }`}
                                             src={item.image}
                                             alt={item.name}
                                         />
                                     </div>
-                                    <div className="w-full relative h-1/6  mt-5   text-start text-[#535353] opacity-90 text-base max-md:text-sm font-bold">
-                                        {item.name} <br />{" "}
-                                        <p className="  max-md:text-[0.5rem] font-light">
+                                    <div className="w-full relative mt-5 text-start text-[#535353] opacity-90 text-base max-md:text-sm font-bold">
+                                        {item.name} <br />
+                                        <p className="max-md:text-[0.9rem] font-light">
                                             {item.title}
                                         </p>
                                     </div>
                                 </div>
                             )
                     )}
-                </div>
-                <div className="flex justify-start items-center  gap-4 max-md:flex-wrap mt-4">
                     {teams.map(
                         (item, i) =>
                             i >= 2 && (
@@ -100,24 +93,22 @@ function Teams() {
                                     key={i}
                                     onMouseEnter={() => handleMouseEnter(i)}
                                     onMouseLeave={handleMouseLeave}
-                                    className="relative  h-[600px] max-lg:h-[500px] max-md:h-[350px] max-md:w-[45%] cursor-pointer  flex flex-col justify-between items-start  overflow-hidden"
+                                    className="w-full h-full relative cursor-pointer  flex justify-center items-center flex-col overflow-hidden"
                                 >
-                                    <div
-                                        className={`w-96 max-2xl:w-72 max-xl:w-56   h-5/6  object-center grayscale-transition scale-transition ${
-                                            hoverImg === i
-                                                ? ""
-                                                : "grayscale scale"
-                                        }`}
-                                    >
+                                    <div className="w-full h-full grayscale-transition scale-transition">
                                         <img
-                                            className="w-full h-full object-cover text-center team-image"
+                                            className={`w-full grayscale-transition h-full scale-transition ${
+                                                hoverImg === i
+                                                    ? ""
+                                                    : "grayscale scale"
+                                            }`}
                                             src={item.image}
                                             alt={item.name}
                                         />
                                     </div>
-                                    <div className="w-full relative h-1/6  mt-5   text-start text-[#535353] opacity-90 text-base max-md:text-sm font-bold">
-                                        {item.name} <br />{" "}
-                                        <p className="  max-md:text-[0.5rem] font-light">
+                                    <div className="w-full relative mt-5 text-start text-[#535353] opacity-90 text-base max-md:text-sm font-bold">
+                                        {item.name} <br />
+                                        <p className="max-md:text-[0.9rem] font-light">
                                             {item.title}
                                         </p>
                                     </div>
