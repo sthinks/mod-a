@@ -140,7 +140,7 @@ function ProjectsDetail() {
                 </div>
             )}
 
-            <div className="w-full h-auto relative mt-12 max-md:mt-8 select-none">
+            <div className="w-full h-auto relative mt-7 max-md:mt-8 select-none">
                 <img
                     className="relative w-full h-[600px] max-2xl:h-[400px] max-xl:h-[300px] max-lg:h-[200px] max-sm:w-full max-sm:h-full  max-md:mb-10 object-cover select-none"
                     src={data?.banner ? data?.banner : data?.small_image}
@@ -378,7 +378,7 @@ function ProjectsDetail() {
                 </div>
             )}
             <Swiper
-                className="mySwiper w-full my-10 select-none"
+                className="mySwiper w-full my-10 select-none h-[300px]"
                 slidesPerView={1}
                 spaceBetween={10}
                 navigation={true}
@@ -401,7 +401,7 @@ function ProjectsDetail() {
                 {data?.images?.map((item, i) => (
                     <SwiperSlide className="h-auto select-none mt-2" key={i}>
                         <img
-                            className="w-full h-full cursor-pointer select-none"
+                            className="w-full h-full cursor-pointer select-none object-cover"
                             src={item}
                             alt="projectimage"
                             onClick={() => setBigImage(item)}

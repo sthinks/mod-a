@@ -33,7 +33,7 @@ export default function Header() {
         >
             {({ open, close }) => (
                 <>
-                    <div className="px-36 max-2xl:px-20 max-xl:px-10 max-md:px-4">
+                    <div className="px-36 max-2xl:px-20 max-xl:px-10 max-lg:px-6 max-md:px-4">
                         <div className="relative flex sm:h-20 h-16 items-center justify-between">
                             <div className="absolute inset-y-0 flex-row-reverse left-0 flex items-center md:hidden justify-between w-full max-sm:top-7">
                                 {/* Mobile menu button*/}
@@ -57,18 +57,18 @@ export default function Header() {
                             </div>
                             <div className="flex items-center justify-center sm:items-stretch sm:justify-around text-[#191919] font-semibold w-full">
                                 <div className="hidden max-sm:ml-6 md:block w-full max-xl:w-full">
-                                    <div className="flex justify-between items-end max-xl:text-sm ">
-                                        <div className="max-w-3xl max-xl:max-w-2xl flex justify-center items-end">
+                                    <div className="flex justify-between items-center max-xl:text-sm ">
+                                        <div className="max-w-3xl max-xl:max-w-2xl flex justify-center items-center">
                                             <div className="flex w-[300px] max-lg:w-[200px] ">
                                                 <a href="/">
                                                     <img
-                                                        className="hidden w-auto md:block relative top-[30px] max-xl:top-[20px]"
+                                                        className="hidden w-auto md:block relative top-[10px]"
                                                         src={Logo}
                                                         alt="Mod-a"
                                                     />
                                                 </a>
                                             </div>
-                                            <div className="w-full flex justify-start items-center pl-12 max-lg:pl-10 text-white gap-8 max-xl:gap-4 ">
+                                            <div className="w-full flex justify-start items-center pl-12 max-lg:pl-4  text-white gap-8 max-xl:gap-4 mt-8">
                                                 {navigation.map((item, i) => (
                                                     <a
                                                         key={i}
@@ -86,7 +86,7 @@ export default function Header() {
                                             </div>
                                         </div>
 
-                                        <div className=" max-w-xs flex justify-center items-center gap-2 relative   text-[#535353] text-base font-light max-xl:pr-4 ">
+                                        <div className=" max-w-xs flex justify-center items-center gap-2 relative   text-[#535353] text-base font-light max-xl:pr-4 mt-8">
                                             <p
                                                 className={`${
                                                     i18n.language === "en"

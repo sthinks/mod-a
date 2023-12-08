@@ -18,7 +18,7 @@ function AboutUs() {
     console.log(window.innerWidth);
     return (
         <div>
-            <div className="w-full h-auto relative mt-12 max-md:mt-8">
+            <div className="w-full h-auto relative mt-7 max-md:mt-8">
                 <img
                     className="relative w-full h-[600px] max-2xl:h-[400px] max-xl:h-[300px] max-lg:h-[200px] max-sm:w-full max-sm:h-full  max-md:mb-10 object-cover"
                     src={TeamBanner}

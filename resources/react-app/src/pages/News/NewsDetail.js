@@ -22,6 +22,7 @@ function NewsDetail() {
         console.log(result);
     };
     useEffect(() => {
+        window.scrollTo(0, 0);
         getNews();
     }, [i18n.language]);
     const handleDragStart = (e) => {
@@ -77,7 +78,7 @@ function NewsDetail() {
                 </div>
             )}
 
-            <div className="w-full h-auto relative mt-12 max-md:mt-8">
+            <div className="w-full h-auto relative mt-7 max-md:mt-8">
                 <img
                     className="relative w-full h-[600px] max-2xl:h-[400px] max-xl:h-[300px]  max-sm:w-full max-sm:h-full  max-md:mb-10 object-cover"
                     src={news?.last_image}
@@ -98,25 +99,31 @@ function NewsDetail() {
                 )}
             </div>
             <div className="w-full px-10 flex justify-between items-start max-lg:flex-col">
-                <div className="w-2/4 max-lg:w-full flex justify-center flex-col item pl-40 max-lg:pl-0 max-lg:px-5">
-                    <p className="text-4xl w-full max-lg:text-3xl font-light text-[#464646] my-8">
+                <div className="w-full max-lg:w-full flex justify-center flex-col item px-24 max-lg:px-5">
+                    <p className="text-4xl w-full max-lg:text-3xl font-semibold text-[#464646] my-8">
                         {news?.name}
                     </p>
-                    <p
-                        className="text-[#464646] opacity-60 leading-7 text-justify"
-                        dangerouslySetInnerHTML={{ __html: news?.description }}
-                    />
-                </div>
-                <div className="w-2/4 max-lg:hidden flex justify-end items-end flex-col gap-2 my-20  pl-40">
-                    {news?.image_gallery.map((item, i) => (
-                        <img key={i} src={item} alt={news?.name} />
-                    ))}
+                    <div className="">
+                        <img
+                            className="w-2/4 h-96 object-cover float-left mr-16 mb-8 "
+                            src={news?.image_gallery[0]}
+                            alt={news?.name}
+                        />
+
+                        <p
+                            className="text-[#464646] opacity-60 leading-7 text-justify"
+                            dangerouslySetInnerHTML={{
+                                __html: news?.description,
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
-            <div className="hidden max-lg:flex">
+
+            <div className={news?.image_gallery.length < 2 ? "hidden" : ""}>
                 {" "}
                 <Swiper
-                    className="mySwiper w-full my-10 select-none"
+                    className="mySwiper w-full my-10 select-none h-[300px]"
                     slidesPerView={1}
                     spaceBetween={10}
                     navigation={true}
@@ -137,9 +144,9 @@ function NewsDetail() {
                     }}
                 >
                     {news?.image_gallery?.map((item, i) => (
-                        <SwiperSlide className="h-auto select-none" key={i}>
+                        <SwiperSlide className={"h-auto select-none"} key={i}>
                             <img
-                                className="w-full h-full cursor-pointer select-none"
+                                className="w-full h-full cursor-pointer select-none object-cover"
                                 src={item}
                                 alt="projectimage"
                                 onClick={() => setBigImage(item)}

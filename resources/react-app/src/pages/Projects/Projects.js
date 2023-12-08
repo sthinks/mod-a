@@ -33,21 +33,21 @@ function Projects() {
 
     return (
         <div>
-            <div className="w-full h-auto relative mt-12 max-md:mt-8 select-none">
+            <div className="w-full h-auto relative mt-7 max-md:mt-8">
                 <img
-                    className="relative w-full h-[600px] max-2xl:h-[400px] max-xl:h-[300px] max-lg:h-[200px] max-sm:w-full max-sm:h-full  max-md:mb-10 object-cover select-none"
+                    className="relative w-full h-[600px] max-2xl:h-[400px] max-xl:h-[300px]  max-sm:w-full max-sm:h-full  max-md:mb-10 object-cover"
                     src={ProjectsBanner}
                     alt="ContactBanner"
                 />
                 {window.innerWidth > 500 ? (
                     <img
-                        className="absolute  max-2xl:w-[45%] max-md:w-[20rem]  -bottom-[0.10rem]  right-0 line-index select-none"
+                        className="absolute  max-2xl:w-[45%] max-md:w-[20rem]  -bottom-[0.10rem]  right-0 line-index"
                         src={Line}
                         alt="Line"
                     />
                 ) : (
                     <img
-                        className="absolute  w-[66%]  bottom-0  right-0 line-index select-none"
+                        className="absolute  w-[66%]  bottom-0  right-0 line-index"
                         src={Line}
                         alt="Line"
                     />

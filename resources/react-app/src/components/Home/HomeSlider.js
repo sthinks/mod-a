@@ -15,8 +15,16 @@ const HomeSlider = (props) => {
     const swiperReff = useRef(null);
     const [nextModal, setNextModal] = useState(false);
     const [activeSlider, setActiveSlider] = useState(0);
+    const [activeSlider2, setActiveSlider2] = useState(1);
 
     const handleSlideChange = () => {
+        if (props.data.length - 1 === activeSlider2) {
+            setNextModal(false);
+            setActiveSlider2(0);
+        } else {
+            setActiveSlider2(activeSlider2 + 1);
+            setNextModal(false);
+        }
         if (props.data.length - 1 === activeSlider) {
             setNextModal(false);
             setActiveSlider(0);
@@ -48,18 +56,18 @@ const HomeSlider = (props) => {
                 navigation={{
                     nextEl: ".custom-next",
                 }}
-                className="mySwiper w-full h-screen max-md:h-[300px] mb-20 mt-12 max-md:mt-8 max-md:mb-10 relative"
+                className="mySwiper w-full h-screen max-md:h-[300px] mb-20 mt-7 max-md:mt-8 max-md:mb-10 relative"
             >
                 {props.data.map((item, i) => (
                     <SwiperSlide className="w-full relative" key={i}>
                         <img
                             className="w-full h-full"
-                            src={item.small_image}
+                            src={item.slider_image}
                             alt="Slider"
                         />
                         <img
                             className="absolute bottom-0 z-[130]  max-xl:hidden right-0 h-full w-[50rem]  object-cover hover:translate-x-4 duration-200 delay-200 cursor-pointer"
-                            src={props?.data[activeSlider].small_image}
+                            src={props?.data[activeSlider].slider_image}
                             alt="second"
                             style={{
                                 clipPath:
@@ -76,7 +84,7 @@ const HomeSlider = (props) => {
                         <img
                             onClick={handlePrev}
                             className="custom-next absolute bottom-0 z-[150] right-0 h-3/4 max-md:h-[90%] w-[30rem] max-md:w-[5rem] object-cover  hover:translate-x-4 duration-200 delay-200 cursor-pointer"
-                            src={props?.data[activeSlider].small_image}
+                            src={props?.data[activeSlider2].slider_image}
                             onMouseEnter={() => setNextModal(true)}
                             onMouseLeave={() => setNextModal(false)}
                             alt="second"

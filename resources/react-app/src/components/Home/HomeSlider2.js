@@ -25,7 +25,7 @@ const HomeSlider2 = () => {
         slider && (
             <Swiper
                 pagination={true}
-                className="mySwiper w-full mb-20 mt-12 max-md:mb-10"
+                className="mySwiper w-full mb-20 mt-7 max-md:mb-10"
             >
                 {slider.map((item, i) => (
                     <SwiperSlide className="w-full" key={i}>

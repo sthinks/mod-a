@@ -30,7 +30,7 @@ function News() {
 
     return (
         <div>
-            <div className="w-full h-auto relative mt-12 max-md:mt-8 select-none">
+            <div className="w-full h-auto relative mt-7 max-md:mt-8 select-none">
                 <img
                     className="relative w-full h-[600px] max-2xl:h-[400px] max-xl:h-[300px] max-lg:h-[200px] max-sm:w-full max-sm:h-full  max-md:mb-10 object-cover select-none"
                     src={NewsBanner}
@@ -76,20 +76,21 @@ function News() {
                                 />
                             </div>
                             <div
-                                className={`absolute z-50 w-full h-[3.25rem] max-xl:h-18 max-md:h-14 bg-black opacity-50  ${
-                                    hoverImg === i
-                                        ? "block duration-150 delay-150"
-                                        : "hidden"
-                                }`}
-                            />
-                            <div
-                                className={`absolute z-50 w-full  text-center text-white text-base max-md:text-sm font-me  ${
+                                className={`absolute z-50 w-full h-auto bg-[#00000096]   ${
                                     hoverImg === i
                                         ? "block duration-150 delay-150"
                                         : "hidden"
                                 }`}
                             >
-                                {item.name}
+                                <p
+                                    className={`z-50 w-full  text-center text-white text-base max-lg:text-sm max-md:text-xs p-2  ${
+                                        hoverImg === i
+                                            ? "block duration-150 delay-150"
+                                            : "hidden"
+                                    }`}
+                                >
+                                    {item.name}
+                                </p>
                             </div>
                         </div>
                     ))}

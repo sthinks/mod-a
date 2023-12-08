@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 function Home() {
     const swiperRef = useRef(null);
     const { t, i18n } = useTranslation();
-
+    const [hover, setHover] = useState(false);
     const navigate = useNavigate();
     const [project, setProject] = useState([]);
     const [news, setNews] = useState([]);
@@ -277,6 +277,68 @@ function Home() {
                         </div>
                     </>
                 )}
+            </div>
+            <div className="w-full flex justify-between items-center gap-5 mb-10 mt-12 max-lg:mt-5  max-lg:flex-col-reverse px-5">
+                <div className="w-2/4 max-lg:w-full  text-justify max-md:mt-2  flex flex-col justify-center items-center">
+                    <div className="max-w-[500px] max-lg:max-w-none item-div cursor-default max-lg:w-full">
+                        <p className="text-xl font-semibold">
+                            {t("contact_title")}
+                        </p>
+                        <div className="mt-4 text-[#464646] opacity-80 leading-7 text-justify">
+                            <p className="my-3">
+                                Varyap Medidian A BLOK Grand Tower D:NO:8 <br />{" "}
+                                ATAŞEHİR / İSTANBUL{" "}
+                            </p>
+                            <div className="my-3">
+                                <a href="mailto:info@mod-a.com">
+                                    info@mod-a.com
+                                </a>
+                                <br />
+                                <a href="mailto:info@mod-a.com">
+                                    careers@mod-a.com
+                                </a>
+                                <br />
+                                <a href="mailto:info@mod-a.com">
+                                    intern@mod-a.com
+                                </a>
+
+                                <br />
+                                <a href="https://www.mod-a.com" target="blank">
+                                    www.mod-a.com
+                                </a>
+
+                                <br />
+                                <a href="12">0(531) 505 50 00</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="w-2/4 max-lg:w-full  text-justify max-md:mt-2  flex flex-col justify-center items-center relative">
+                    <iframe
+                        onMouseEnter={() => setHover(true)}
+                        onMouseLeave={() => setHover(false)}
+                        className="z-40"
+                        title="Mod-a Harita"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.1262063543395!2d29.098467900577994!3d41.000610773783734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac883af3be5e1%3A0x8bdd69abed471d23!2sBarbaros%2C%20Varyap%20Meridian%20A%20Blok%2C%2034746%20Ata%C5%9Fehir%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1700218581404!5m2!1str!2str"
+                        width="100%"
+                        height="450"
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                    <div
+                        onMouseEnter={() => setHover(true)}
+                        onMouseLeave={() => setHover(false)}
+                        className={
+                            hover
+                                ? "hidden opacity-0 delay-100 duration-300"
+                                : "absolute w-full h-full bg-black opacity-50 top-0 left-0 z-50 delay-100 duration-300 cursor-pointer"
+                        }
+                        style={{
+                            transition: "opacity 0.0s ease",
+                        }}
+                    />
+                </div>
             </div>
         </div>
     );
