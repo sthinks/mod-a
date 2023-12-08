@@ -16,7 +16,7 @@ function Teams() {
         const result = await generalService.getTeams(i18n.language);
         setTeams(result);
     };
-
+    //asdasdas
     useEffect(() => {
         getAllTeams();
     }, [i18n.language]);
