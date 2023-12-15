@@ -43,36 +43,12 @@ function AboutUs() {
                     <div className="max-w-[500px] max-lg:max-w-none font-normal  max-lg:text-base max-lg:text-justify  text-[#464646] opacity-60 leading-7 text-justify">
                         <p className="">
                             <i>
-                                <b>MOD Architects</b>
+                                <b>MOD A</b>
                             </i>
-                            , İstanbul merkezli çok disiplinli bir mimarlık
-                            ofisidir. Her projede insan odaklı bir bakış açısı
-                            benimseyen ekibiyle, yaşam alanlarını işlevsel,
-                            estetik ve sürdürülebilir biçimde yeniden
-                            şekillendirme hedefini taşır. Zamanın getirdiği
-                            zorlukları inovatif çözümlerle aşıp, ekonomik
-                            engellere rağmen en üst seviyede değer sunarak,
-                            sosyal ve kültürel çeşitliliği analitik bir
-                            yaklaşımla bir araya getirip, her proje için özgün
-                            mimari yaklaşımlar geliştirir.
+                            {t("about_text_1")}
                         </p>
-                        <p className=" ">
-                            MOD Architects, farklı alanlarda yürüttüğü
-                            projelerle deneyim yelpazesini sürekli
-                            genişletmektedir. İşverenlerle yakın işbirliği
-                            içinde, projelerin başlangıcından sonuna kadar
-                            disiplinli bir yaklaşımla ilerlemek ana
-                            prensiplerindendir.
-                        </p>
-                        <p>
-                            MOD Architects, yenilikçi ve dinamik kadrosuyla,
-                            ilerleyen teknolojiyi izleyerek, farklı ölçeklerdeki
-                            projeler - master planlar, konutlar, kompleks
-                            yapılar ve iç mekanlar - ile modern çağın
-                            gereksinimlerine uyumlu tasarımlar sunarak, sadece
-                            çağın ötesine geçmeyi değil, aynı zamanda geleceği
-                            şekillendirmeyi amaçlar.
-                        </p>
+                        <p className=" ">{t("about_text_2")}</p>
+                        <p>{t("about_text_3")}</p>
                     </div>
 
                     <img
@@ -83,9 +59,7 @@ function AboutUs() {
                 </div>
                 <div className="w-2/4 max-lg:w-full  max-lg:flex max-lg:justify-center max-lg:items-center max-sm:text-center max-sm:pl-0 text-4xl max-lg:text-3xl max-sm:text-2xl font-extrabold text-[#535353] opacity-40 text-end  px-[10%] max-lg:px-0 max-lg:pr-0">
                     <i className="float-right  max-lg:text-center max-lg:my-10 max-lg:max-w-none max-lg:float-center max-w-[300px] ">
-                        Geçmişin ilhamını, geleceğin yaratıcılığı ve modern
-                        tasarım anlayışıyla birleştirerek, mekanlara özgün
-                        kimlikler kazandırmak.
+                        {t("about_text_4")}
                     </i>
                 </div>
             </div>
@@ -100,42 +74,20 @@ function AboutUs() {
                     </div>
                     <div className="w-2/4 max-lg:w-full flex justify-center items-center">
                         <div className="max-w-[500px] font-normal  max-lg:max-w-none  max-lg:text-base max-lg:text-justify text-[#464646] opacity-60 leading-7 text-justify">
+                            <p>{t("about_text_5")}</p> <br />
                             <p>
-                                Ekibin vizyonu, tasarım süreçlerinde yerin
-                                geleneğini, iklimini ve çağdaş kültürünü
-                                anlayarak, bu dinamikleri modern ve inovatif
-                                tasarım anlayışlarıyla birleştirmektir. Ekip,
-                                sadece estetik bir form yaratma değil, aynı
-                                zamanda çevresine uyumlu, işlevsel ve anlamlı
-                                mekanlar tasarlama amacı taşır.
-                            </p>{" "}
-                            <br />
-                            <p>
-                                <b className="font-bold opacity-50">MOD A</b>
-                                rchitects, mimari projelerini daha büyük bir
-                                bağlam içinde ele alarak, mekanın kimliğini ve
-                                karakterini ortaya çıkarmaktır. Bu bağlam,
-                                bölgenin geçmişi ve geleceği arasında köprü
-                                kurmak anlamında önemlidir. Mimari çözümler,
-                                binaları sadece fiziksel yapılar olarak değil,
-                                aynı zamanda kültürel ve sosyal etkileşimlerin
-                                bir yansıması olarak ele alır.
+                                {i18n.language === "tr" && (
+                                    <span className="font-bold">
+                                        Mod Architects
+                                    </span>
+                                )}
+
+                                {t("about_text_6")}
                             </p>
                             <br />
-                            <p>
-                                İnsan ve doğa ilişkisini çağdaş bir yorumla
-                                somutlaştıran fütüristik, organik, teknolojik
-                                olarak gelişmiş tasarımlar oluşturmaya çalışan
-                                MOD Architects ekibi, her zaman tasarımın
-                                merkezinde tuttuğu kullanıcıya, aitlik hissini
-                                kaybettirmeden farklı yaklaşımlar içeren, tercih
-                                edilebilir mekanlar sunmaktadır.
-                            </p>
+                            <p>{t("about_text_7")}</p>
                             <i>
-                                <b>
-                                    Yerel Kimliği Modern Yaklaşımlarla Yeniden
-                                    Tanımlamak
-                                </b>
+                                <b>{t("about_text_8")}</b>
                             </i>
                         </div>
                     </div>

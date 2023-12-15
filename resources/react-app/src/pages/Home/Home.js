@@ -83,9 +83,9 @@ function Home() {
                             <p className="opacity-70 font-normal  max-w-[500px] max-lg:max-w-none max-md:text-justify ">
                                 <p className="text-4xl text-[#535353]  opacity-70 font-semibold max-lg:block hidden max-lg:my-10 ">
                                     MOD-A
-                                </p>
+                                </p>{" "}
                                 <p className="text-[#464646] opacity-80 leading-7 text-justify">
-                                    <b className="font-semibold">MOD A</b>{" "}
+                                    <span className="font-semibold">MOD A</span>
                                     {t("home_right_text")}{" "}
                                 </p>{" "}
                                 <a
@@ -240,15 +240,27 @@ function Home() {
                                 onMouseEnter={() => setHoverImg(selectNew)}
                                 onMouseLeave={() => setHoverImg(-1)}
                             >
-                                <div className="relative overflow-hidden flex justify-center items-center select-none">
+                                <div
+                                    className="relative overflow-hidden flex justify-center items-center select-none cursor-pointer"
+                                    onClick={() =>
+                                        navigate(
+                                            `/news/${news[selectNew]?.slug}`
+                                        )
+                                    }
+                                >
                                     <img
-                                        className="w-full h-full object-cover cursor-pointer transition-transform transform-gpu group-hover:scale-105 duration-500 delay-200 select-none"
+                                        className="w-full  h-full object-cover cursor-pointer transition-transform transform-gpu group-hover:scale-105 duration-500 delay-200 select-none"
                                         src={news[selectNew]?.image}
-                                        alt="ss"
+                                        onClick={() =>
+                                            navigate(
+                                                `/news/${news[selectNew]?.slug}`
+                                            )
+                                        }
+                                        alt={news[selectNew]?.name}
                                     />
-                                    <div className="absolute inset-0 bg-black opacity-40 transition-opacity duration-300 delay-300 ease-in-out group-hover:opacity-0 select-none"></div>
-                                    <div className="absolute w-full z-40 h-20 bg-white opacity-10 transition-opacity duration-300 delay-500 ease-in-out group-hover:opacity-0 select-none"></div>
-                                    <p className="absolute w-full text-center z-50 text-2xl max-xl:text-xl max-md:text-base max-md:font-light max-md:px-4  font-semibold text-white transition-opacity duration-300 ease-in-out group-hover:opacity-0 select-none px-3">
+                                    <div className="absolute inset-0 cursor-pointer bg-black opacity-40 transition-opacity duration-300 delay-300 ease-in-out group-hover:opacity-0 select-none"></div>
+                                    <div className="absolute cursor-pointer w-full z-40 h-20 bg-white opacity-10 transition-opacity duration-300 delay-500 ease-in-out group-hover:opacity-0 select-none"></div>
+                                    <p className="absolute cursor-pointer w-full text-center z-50 text-2xl max-xl:text-xl max-md:text-base max-md:font-light max-md:px-4  font-semibold text-white transition-opacity duration-300 ease-in-out group-hover:opacity-0 select-none px-3">
                                         {news[selectNew]?.name}
                                     </p>
                                 </div>
@@ -289,27 +301,12 @@ function Home() {
                                 Varyap Medidian A BLOK Grand Tower D:NO:8 <br />{" "}
                                 ATAŞEHİR / İSTANBUL{" "}
                             </p>
-                            <div className="my-3">
-                                <a href="mailto:info@mod-a.com">
-                                    info@mod-a.com
-                                </a>
-                                <br />
-                                <a href="mailto:info@mod-a.com">
-                                    careers@mod-a.com
-                                </a>
-                                <br />
-                                <a href="mailto:info@mod-a.com">
-                                    intern@mod-a.com
-                                </a>
-
-                                <br />
-                                <a href="https://www.mod-a.com" target="blank">
-                                    www.mod-a.com
-                                </a>
-
-                                <br />
-                                <a href="12">0(531) 505 50 00</a>
-                            </div>
+                            <a
+                                className="text-with-underline font-normal pt-2 hover:text-black duration-150 delay-15 text-[#464646] opacity-80 leading-7 text-justify"
+                                href={`/contact`}
+                            >
+                                {t("devami")}
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -319,7 +316,7 @@ function Home() {
                         onMouseLeave={() => setHover(false)}
                         className="z-40"
                         title="Mod-a Harita"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.1262063543395!2d29.098467900577994!3d41.000610773783734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac883af3be5e1%3A0x8bdd69abed471d23!2sBarbaros%2C%20Varyap%20Meridian%20A%20Blok%2C%2034746%20Ata%C5%9Fehir%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1700218581404!5m2!1str!2str"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.1032526272784!2d29.1029904!3d41.00111319999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac9bd9432774b%3A0xa02c34b82e4ebcf2!2sMOD%20ARCHITECTS!5e0!3m2!1str!2str!4v1702023332419!5m2!1str!2str"
                         width="100%"
                         height="450"
                         allowFullScreen=""

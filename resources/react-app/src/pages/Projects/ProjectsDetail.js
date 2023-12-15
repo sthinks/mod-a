@@ -114,7 +114,7 @@ function ProjectsDetail() {
                     draggable="false"
                     onDragStart={handleDragStart}
                     onDragOver={handleDragOver}
-                    className="w-full h-full fixed top-0 left-0 z-30 flex justify-center items-center select-none"
+                    className="w-full h-full fixed top-0 left-0 z-[9999999999999999] flex justify-center items-center select-none"
                 >
                     <p
                         className="w-10 h-10 text-2xl rounded-full absolute right-10 top-10 bg-white text-black z-50 flex justify-center items-center cursor-pointer hover:scale-105 duration-100 delay-100"

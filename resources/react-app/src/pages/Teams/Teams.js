@@ -86,6 +86,8 @@ function Teams() {
                                 </div>
                             )
                     )}
+                </div>
+                <div className="grid grid-cols-5 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-4 mt-3">
                     {teams.map(
                         (item, i) =>
                             i >= 2 && (

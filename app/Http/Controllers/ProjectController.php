@@ -30,7 +30,13 @@ class ProjectController extends Controller
             } else {
                 $item->last_image = null;
             }
-
+            if ($item->slider_image) {
+                $item->slider_image = url(
+                        sprintf('storage/%s', str_replace('\\', '/', $item->slider_image))
+                    );
+            } else {
+                    $item->slider_image = null;
+            }
             if ($item->small_image) {
                 $item->small_image = url(
                     sprintf('storage/%s', str_replace('\\', '/', $item->small_image))

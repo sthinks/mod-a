@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import NewsSlider from "../../components/Home/NewsSlider";
 
 function NewsDetail() {
     const [news, setNews] = useState();
@@ -19,7 +20,6 @@ function NewsDetail() {
     const getNews = async () => {
         const result = await generalService.getNew(slug, i18n.language);
         setNews(result.data);
-        console.log(result);
     };
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -52,7 +52,7 @@ function NewsDetail() {
                     draggable="false"
                     onDragStart={handleDragStart}
                     onDragOver={handleDragOver}
-                    className="w-full h-full fixed top-0 left-0 z-30 flex justify-center items-center select-none"
+                    className="w-full h-full fixed top-0 left-0 z-[9999999999999999] flex justify-center items-center select-none"
                 >
                     <p
                         className="w-10 h-10 text-2xl rounded-full absolute right-10 top-10 bg-white text-black z-50 flex justify-center items-center cursor-pointer hover:scale-105 duration-100 delay-100"
@@ -98,63 +98,75 @@ function NewsDetail() {
                     />
                 )}
             </div>
-            <div className="w-full px-10 flex justify-between items-start max-lg:flex-col">
-                <div className="w-full max-lg:w-full flex justify-center flex-col item px-24 max-lg:px-5">
-                    <p className="text-4xl w-full max-lg:text-3xl font-semibold text-[#464646] my-8">
-                        {news?.name}
-                    </p>
-                    <div className="">
-                        <img
-                            className="w-2/4 h-96 object-cover float-left mr-16 mb-8 "
-                            src={news?.image_gallery[0]}
-                            alt={news?.name}
-                        />
-
+            <div className="w-full pl-5 flex justify-between items-start max-lg:flex-col max-lg:px-0 mt-10">
+                <div className="w-full max-lg:w-full flex justify-between items-start item max-lg:px-3 gap-10">
+                    <div className="w-2/4 max-lg:w-full max-lg:mt-2 flex flex-col justify-center items-center">
+                        <p className="text-4xl w-full max-xl:text-3xl max-lg:text-xl  font-semibold text-[#464646] mb-8">
+                            {news?.name}
+                        </p>
                         <p
-                            className="text-[#464646] opacity-60 leading-7 text-justify"
+                            className="text-[#464646] opacity-60 leading-7 text-justify max-lg:text-base"
                             dangerouslySetInnerHTML={{
                                 __html: news?.description,
                             }}
                         />
                     </div>
+                    <div className="w-2/4 h-auto object-cover  mb-8 max-lg:w-full flex flex-col justify-center items-center gap-10 max-lg:hidden">
+                        {news && (
+                            <>
+                                <NewsSlider
+                                    data={news?.image_gallery.slice(
+                                        0,
+                                        Math.floor(
+                                            news?.image_gallery.length / 2
+                                        )
+                                    )}
+                                />
+                                <NewsSlider
+                                    data={news?.image_gallery.slice(
+                                        Math.floor(
+                                            news?.image_gallery.length / 2
+                                        )
+                                    )}
+                                />
+                            </>
+                        )}
+                    </div>
                 </div>
             </div>
 
-            <div className={news?.image_gallery.length < 2 ? "hidden" : ""}>
-                {" "}
-                <Swiper
-                    className="mySwiper w-full my-10 select-none h-[300px]"
-                    slidesPerView={1}
-                    spaceBetween={10}
-                    navigation={true}
-                    modules={[Navigation]}
-                    breakpoints={{
-                        640: {
-                            slidesPerView: 2,
-                            spaceBetween: 20,
-                        },
-                        768: {
-                            slidesPerView: 3,
-                            spaceBetween: 40,
-                        },
-                        1024: {
-                            slidesPerView: 4,
-                            spaceBetween: 50,
-                        },
-                    }}
-                >
-                    {news?.image_gallery?.map((item, i) => (
-                        <SwiperSlide className={"h-auto select-none"} key={i}>
-                            <img
-                                className="w-full h-full cursor-pointer select-none object-cover"
-                                src={item}
-                                alt="projectimage"
-                                onClick={() => setBigImage(item)}
-                            />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
+            <Swiper
+                className="hidden max-lg:block mySwiper w-full my-10 select-none h-[300px]"
+                slidesPerView={1}
+                spaceBetween={10}
+                navigation={true}
+                modules={[Navigation]}
+                breakpoints={{
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 50,
+                    },
+                }}
+            >
+                {news?.image_gallery?.map((item, i) => (
+                    <SwiperSlide className={"h-auto select-none"} key={i}>
+                        <img
+                            className="w-full h-full cursor-pointer select-none object-cover"
+                            src={item}
+                            alt="projectimage"
+                            onClick={() => setBigImage(item)}
+                        />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
         </div>
     );
 }

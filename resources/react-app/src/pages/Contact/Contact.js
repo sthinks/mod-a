@@ -1,5 +1,5 @@
 import React from "react";
-import ContactBanner from "../../assets/Contact/contactbanner.jpg";
+import ContactBanner from "../../assets/AboutUs/aboutusbanner.png";
 import { useTranslation } from "react-i18next";
 import Line from "../../assets/cizgi.png";
 import { useState } from "react";
@@ -66,7 +66,7 @@ function Contact() {
                     onMouseLeave={() => setHover(false)}
                     className="z-40"
                     title="Mod-a Harita"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.1262063543395!2d29.098467900577994!3d41.000610773783734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac883af3be5e1%3A0x8bdd69abed471d23!2sBarbaros%2C%20Varyap%20Meridian%20A%20Blok%2C%2034746%20Ata%C5%9Fehir%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1700218581404!5m2!1str!2str"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.1032526272784!2d29.1029904!3d41.00111319999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac9bd9432774b%3A0xa02c34b82e4ebcf2!2sMOD%20ARCHITECTS!5e0!3m2!1str!2str!4v1702023332419!5m2!1str!2str"
                     width="100%"
                     height="450"
                     allowFullScreen=""
