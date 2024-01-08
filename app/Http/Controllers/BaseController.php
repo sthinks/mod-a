@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Slider;
 use App\Models\News;
+use App\PageBanner;
+
 
 use Illuminate\Http\Request;
 
@@ -25,7 +27,7 @@ class BaseController extends Controller
         });
         return response()->json($slider);
     }
-     public function getAllNews(Request $request)
+    public function getAllNews(Request $request)
     {
         $acceptLanguage = $request->header('Accept-Language');
         $languageCode = explode(',', $acceptLanguage)[0];
@@ -50,24 +52,24 @@ class BaseController extends Controller
             }
 
             if ($item->image_gallery) {
-            $textImages = json_decode($item->image_gallery);
+                $textImages = json_decode($item->image_gallery);
 
-            // Map each text image path to its URL
-            $textImages = array_map(function ($path) {
-                return url(sprintf('storage/%s', str_replace('\\', '/', $path)));
-            }, $textImages);
+                // Map each text image path to its URL
+                $textImages = array_map(function ($path) {
+                    return url(sprintf('storage/%s', str_replace('\\', '/', $path)));
+                }, $textImages);
 
-            $item->image_gallery = $textImages;
+                $item->image_gallery = $textImages;
             } else {
                 $item->image_gallery = null;
             }
-                
+
             return $item;
         });
 
         return response()->json($data);
     }
-     public function getNew($slug, Request $request)
+    public function getNew($slug, Request $request)
     {
         $acceptLanguage = $request->header('Accept-Language');
         $languageCode = explode(',', $acceptLanguage)[0];
@@ -90,7 +92,7 @@ class BaseController extends Controller
             $projects->last_image = null;
         }
 
-       
+
         if ($projects->image_gallery) {
             $textImages = json_decode($projects->image_gallery);
 
@@ -103,8 +105,49 @@ class BaseController extends Controller
         } else {
             $projects->image_gallery = null;
         }
-        
+
         return response()->json($projects);
     }
+    public function getBanners()
+    {
+        $data = PageBanner::get();
 
+        $data = $data[0];
+        if ($data->about_us) {
+            $data->about_us = url(
+                sprintf('storage/%s', str_replace('\\', '/', $data->about_us))
+            );
+        } else {
+            $data->about_us = null;
+        }
+        if ($data->project) {
+            $data->project = url(
+                sprintf('storage/%s', str_replace('\\', '/', $data->project))
+            );
+        } else {
+            $data->project = null;
+        }
+        if ($data->team) {
+            $data->team = url(
+                sprintf('storage/%s', str_replace('\\', '/', $data->team))
+            );
+        } else {
+            $data->team = null;
+        }
+        if ($data->news) {
+            $data->news = url(
+                sprintf('storage/%s', str_replace('\\', '/', $data->news))
+            );
+        } else {
+            $data->news = null;
+        }
+        if ($data->contact) {
+            $data->contact = url(
+                sprintf('storage/%s', str_replace('\\', '/', $data->contact))
+            );
+        } else {
+            $data->contact = null;
+        }
+        return response()->json($data);
+    }
 }

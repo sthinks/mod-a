@@ -12,7 +12,8 @@ class ProjectController extends Controller
         $acceptLanguage = $request->header('Accept-Language');
         $languageCode = explode(',', $acceptLanguage)[0];
         $languageCode = explode('-', $languageCode)[0];
-        $data = Project::withTranslations($languageCode)->get();
+        $data = Project::withTranslations($languageCode)->orderBy('slider_order', 'asc')->get();
+
         $data = $data->translate($languageCode);
         $data->map(function ($item) {
             if ($item->banner) {
@@ -32,10 +33,10 @@ class ProjectController extends Controller
             }
             if ($item->slider_image) {
                 $item->slider_image = url(
-                        sprintf('storage/%s', str_replace('\\', '/', $item->slider_image))
-                    );
+                    sprintf('storage/%s', str_replace('\\', '/', $item->slider_image))
+                );
             } else {
-                    $item->slider_image = null;
+                $item->slider_image = null;
             }
             if ($item->small_image) {
                 $item->small_image = url(

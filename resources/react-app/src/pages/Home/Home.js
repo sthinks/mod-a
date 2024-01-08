@@ -18,11 +18,33 @@ function Home() {
     const [selectNew, setSelectNew] = useState(0);
     const [activeSlider, setActiveSlider] = useState(0);
     const [hoverImg, setHoverImg] = useState();
-
+    const [projectList, setProjectList] = useState();
+    const compareFunction = (a, b) => {
+        // "order" özelliğine göre azalan sıralama
+        return a.home_order - b.home_order;
+    };
     const getProjects = async () => {
+        // Orijinal veriyi al
         const result = await generalService.getProjects(i18n.language);
+
+        // Orijinal verinin bir kopyasını oluştur
+        const newProjectList = [...result];
+
+        // Kopyayı sırala
+        const newProjectListSorted = newProjectList.sort(compareFunction);
+
+        // Sıralanmış kopyayı kullanabilirsin
+        console.log(newProjectListSorted);
+
+        // Orijinal veriyi kullanabilirsin
+        console.log(result);
+        console.log("selam");
+
+        // State'i güncelle
+        setProjectList(newProjectListSorted);
         setProject(result);
     };
+
     const getNews = async () => {
         const result = await generalService.getNews(i18n.language);
         setNews(result);
@@ -118,7 +140,7 @@ function Home() {
                         {t("header_projects")}
                     </p>
                 </div>
-                {project && (
+                {projectList && (
                     <div className=" w-full flex justify-between items-center gap-5 mb-10  max-lg:flex-col-reverse px-5">
                         <div className="w-2/4 max-lg:w-full max-lg:mt-2 flex flex-col justify-center items-center">
                             <div>
@@ -126,7 +148,8 @@ function Home() {
                                     className="max-w-[500px] max-lg:max-w-none item-div"
                                     dangerouslySetInnerHTML={{
                                         __html: truncateText(
-                                            project[activeSlider]?.description,
+                                            projectList[activeSlider]
+                                                ?.description,
                                             37
                                         ),
                                     }}
@@ -134,7 +157,7 @@ function Home() {
 
                                 <a
                                     className="text-with-underline pt-2 hover:text-black duration-150 font-normal delay-150 text-[#464646] opacity-60 leading-7 text-justify"
-                                    href={`/projects/${project[activeSlider]?.slug}`}
+                                    href={`/projects/${projectList[activeSlider]?.slug}`}
                                     target="blank"
                                 >
                                     {t("devami")}
@@ -170,7 +193,7 @@ function Home() {
                                 ref={swiperRef}
                                 onSlideChange={handleSlideChange}
                             >
-                                {project.map((item, i) => (
+                                {projectList.map((item, i) => (
                                     <SwiperSlide
                                         key={item.id}
                                         className="relative w-full h-auto flex justify-center items-center cursor-pointer"

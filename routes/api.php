@@ -37,6 +37,10 @@ Route::get('/get-sliders', [
     \App\Http\Controllers\BaseController::class,
     'getSliders',
 ]);
+Route::get('/get-banners', [
+    \App\Http\Controllers\BaseController::class,
+    'getBanners',
+]);
 Route::get('/get-news', [
     \App\Http\Controllers\BaseController::class,
     'getAllNews',

@@ -53,6 +53,10 @@ const getNew = async (slug, lang) => {
     });
     return result;
 };
+const getBanners = async () => {
+    const result = await axiosInstance.get("get-banners");
+    return result.data;
+};
 const exportFunction = {
     getTeams,
     getProjects,
@@ -60,6 +64,7 @@ const exportFunction = {
     getSliders,
     getNews,
     getNew,
+    getBanners,
 };
 
 export default exportFunction;

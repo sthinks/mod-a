@@ -26,7 +26,7 @@ function ProjectsDetail() {
     };
     const getProject = async () => {
         const result = await generalService.getProject(slug, i18n.language);
-        console.log(result.data.description);
+        console.log(result);
         extractParagraphs(result.data.description);
         setData(result.data);
     };
@@ -243,7 +243,7 @@ function ProjectsDetail() {
                                 <div
                                     key={i}
                                     className={
-                                        data.slug === "rams-city-golden-horn"
+                                        data.tema_chose === "1"
                                             ? "-full flex justify-between items-stretch my-8 float-right max-md:flex-col-reverse px-5 gap-5 max-lg:flex-col max-md:px-0"
                                             : "w-full flex justify-between items-stretch my-8 float-right max-md:flex-col-reverse px-5 gap-5 max-lg:flex-col-reverse max-md:px-0"
                                     }
@@ -251,14 +251,12 @@ function ProjectsDetail() {
                                     {" "}
                                     <div
                                         className={
-                                            data.slug ===
-                                            "rams-city-golden-horn"
+                                            data.tema_chose === "1"
                                                 ? "w-2/4 max-lg:w-full flex flex-col justify-between items-center max-lg:items-start max-md:px-5"
                                                 : "w-2/4 max-lg:w-full flex flex-col justify-center items-center max-lg:items-start max-md:px-5"
                                         }
                                     >
-                                        {data.slug ===
-                                        "rams-city-golden-horn" ? (
+                                        {data.tema_chose === "1" ? (
                                             <div className="w-full h-full flex justify-center items-center">
                                                 {" "}
                                                 <p
@@ -281,8 +279,7 @@ function ProjectsDetail() {
                                             />
                                         )}
 
-                                        {data.slug ===
-                                            "rams-city-golden-horn" && (
+                                        {data.tema_chose === "1" && (
                                             <img
                                                 className="w-full max-lg:w-full float-right"
                                                 src={data.text_images[i]}
@@ -329,16 +326,15 @@ function ProjectsDetail() {
                                         )}
                                     </div>
                                 </div>
-                                {data.slug === "rams-city-golden-horn" &&
-                                    i === 1 && (
-                                        <div className="w-full flex justify-center items-center mt-4">
-                                            <img
-                                                className="w-full h-full"
-                                                src={data.last_image}
-                                                alt={data.name}
-                                            />
-                                        </div>
-                                    )}
+                                {data.tema_chose === "1" && i === 1 && (
+                                    <div className="w-full flex justify-center items-center mt-4">
+                                        <img
+                                            className="w-full h-full"
+                                            src={data.last_image}
+                                            alt={data.name}
+                                        />
+                                    </div>
+                                )}
                             </>
                         )
                     )}
@@ -348,7 +344,7 @@ function ProjectsDetail() {
             {data && (
                 <div
                     className={
-                        data.slug === "rams-city-golden-horn"
+                        data.tema_chose === "1"
                             ? "hidden"
                             : "w-full flex justify-center items-center mt-4"
                     }
@@ -366,7 +362,7 @@ function ProjectsDetail() {
                     ) : (
                         <img
                             className={
-                                data.slug === "rams-city-golden-horn" ||
+                                data.tema_chose === "1" ||
                                 data.last_image === null
                                     ? "hidden"
                                     : "w-full h-full"
